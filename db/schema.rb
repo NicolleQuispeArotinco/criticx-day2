@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2020_05_20_022753) do
 
   create_table "critics", force: :cascade do |t|
     t.string "username"
-    t.text "body"
+    t.string "body"
     t.bigint "game_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
