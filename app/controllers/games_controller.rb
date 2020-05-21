@@ -1,4 +1,11 @@
 class GamesController < ApplicationController
+    def destroy 
+        @game = Game.find(params[:id])
+        @game.destroy
+        render json: { status: 'Successfully destroyed', data: @game }, status: :ok
+    end
+    #------
+=begin
     def create 
         @game = Game.new(game_params)
         if @game.save
@@ -13,7 +20,6 @@ class GamesController < ApplicationController
         params.require(:game).permit(:name, :genre, :price, :release_date, :company_id)
     end
     #------
-=begin
     def index
         @games = Game.all
         render json: @games
