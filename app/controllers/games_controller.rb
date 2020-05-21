@@ -1,4 +1,19 @@
 class GamesController < ApplicationController
+    def create 
+        @game = Game.new(game_params)
+        if @game.save
+            render json: @game
+        else
+            render json: @game.errors
+        end
+    end
+
+    private
+    def game_params
+        params.require(:game).permit(:name, :genre, :price, :release_date, :company_id)
+    end
+    #------
+=begin
     def index
         @games = Game.all
         render json: @games
@@ -7,4 +22,5 @@ class GamesController < ApplicationController
         @games = Game.find(params[:id])
         render json:@games
     end
+=end
 end
